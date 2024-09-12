@@ -4,15 +4,15 @@ import Button from "./Button";
 const BuyNow = () => {
   return (
     <div className=" flex flex-col gap-3 justify-start">
-      <div className=" flex items-center gap-5  ">
+      <div className=" flex items-center gap-2 md:gap-5 flex-wrap   ">
         <Button text={"Try For Free"} />
-        <div className="flex  gap-3 items-center whitespace-nowrap">
+        <div className="flex  gap-3 items-center whitespace-nowrap md:text-sm text-xs">
           <span >Availeble on:</span>
 
-          <Image src={"os.svg"} alt="" width={100} height={100} />
+          <Image src={"os.svg"} alt="" className="md:w-[90px] md:h-[90px] w-[50px] h-[50px] " width={100} height={100} />
         </div>
       </div>
-      <span className="text-sm whitespace-nowrap">Buy now for $40 only</span>
+      <span className="md:text-sm text-xs whitespace-nowrap ">Buy now for $40 only</span>
     </div>
   );
 };

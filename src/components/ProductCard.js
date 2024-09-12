@@ -15,10 +15,10 @@ const ProductCard = ({ product }) => {
   } = product;
 
   return (
-    <div className="bg-[#FEF3BC] rounded-lg hover:scale-[1.02] duration-200 transition  shadow-lg p-4 max-w-xs flex flex-col  min-w-[200px] cursor-pointer">
+    <div className="bg-[#FEF3BC] rounded-lg hover:scale-[1.02] duration-200 transition  shadow-lg p-4 max-w-xs flex flex-col  min-w-[200px]  cursor-pointer">
       <div className="flex justify-center items-center mb-2">
         <Image
-          className="rounded-md object-contain  w-full h-[160px] "
+          className="rounded-md object-contain  w-full h-[140px] md:h-[160px] bg-green-300 "
           src={`${images[0]}`}
           alt={title}
           width={160}

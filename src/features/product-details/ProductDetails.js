@@ -28,9 +28,9 @@ const ProductDetails = ({params}) => {
   // console.log(params.productId)
 
   return (
-    <div className="flex justify-evenly h-screen overflow-hidden text-white p-6  mx-auto rounded-lg shadow-lg mt-24">
+    <div className="flex md:justify-evenly flex-col md:flex-row h-screen md:overflow-hidden text-white p-6  mx-auto rounded-lg shadow-lg mt-24">
       {/* Product Image */}
-      <div className="flex justify-center items-center mt-16 bg-[#FEF3BC] h-[400px] basis-[40%] rounded-2xl">
+      <div className="flex justify-center mx-auto items-center mt-16 bg-[#FEF3BC] h-[400px] md:basis-[40%] rounded-2xl sm:min-w-[400px] max-w-full" >
         <Image
           className="h-auto"
           src={thumbnail}
@@ -41,33 +41,33 @@ const ProductDetails = ({params}) => {
       </div>
 
       {/* Product Details */}
-      <div className="basis-[40%] overflow-y-scroll scrollbar-hide p-6">
-        <h1 className="text-3xl font-bold text-gray-100 mt-4">{title}</h1>
+      <div className="md:basis-[40%] md:overflow-y-scroll scrollbar-hide p-6">
+        <h1 className="md:text-3xl text-2xl font-bold text-gray-100 mt-4">{title}</h1>
         <p className="text-gray-400 text-sm mb-4">{category} • {brand}</p>
 
         {/* Pricing and Discount */}
         <div className="flex justify-between items-center mt-4 mb-2">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-semibold text-green-400">
+            <span className="md:text-2xl text-base font-semibold text-green-400">
               ${price}
             </span>
-            <span className="text-sm text-gray-500 line-through">
+            <span className="md:text-sm text-xs  text-gray-500 line-through">
               ${(price + (discountPercentage / 100) * price).toFixed(2)}
             </span>
-            <span className="text-sm text-red-400">
+            <span className="md:text-sm text-xs  text-red-400">
               {discountPercentage}% Off
             </span>
           </div>
           <div className="flex items-center">
             <span className="text-yellow-400 text-lg">★</span>
-            <span className="text-lg font-semibold text-gray-300">
+            <span className="md:text-sm text-xs font-semibold text-gray-300">
               {rating}
             </span>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-gray-300 mb-6">{description}</p>
+        <p className="text-gray-300 mb-6 md:text-base text-sm line-clamp-5">{description}</p>
 
         {/* Stock and Availability */}
         <div className="flex justify-between items-center mb-4">

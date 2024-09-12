@@ -5,7 +5,7 @@ import useCategoryList from "@/hooks/useCategoryList";
 import useProducts from "@/hooks/useProducts";
 import React, { useEffect, useState } from "react";
 
-const FilterProductSidedebar = () => {
+const FilterProductSidedebar = ({setToggleFilterSidebar}) => {
   const { selectedCategory, setSelectedCategory } = useCategory();
   const { searchQuery, setSearchQuery } = useSearch();
   
@@ -18,6 +18,7 @@ const FilterProductSidedebar = () => {
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     setSearchQuery('');
+    setToggleFilterSidebar(false)
   };
 
   const handleRatingChange = (rating) => {

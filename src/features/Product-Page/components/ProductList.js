@@ -58,7 +58,7 @@ const ProductList = ({ isShowAllProducts }) => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-y-8 gap-4 my-10 overflow-x-scroll scrollbar-hide ">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3   place-items-center grid-cols-1  2xl:grid-cols-4  gap-y-8 gap-4 my-10 overflow-x-scroll scrollbar-hide ">
         {sortedProducts.map((product, i) => (
           <Link
             href={`/game-store/${product.id}`}

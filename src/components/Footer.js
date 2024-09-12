@@ -2,10 +2,10 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col gap-4 bg-[#1E1D16] absolute bottom-0 left-0 w-full  z-[200]">
+    <div className="flex flex-col gap-4 bg-[#1E1D16] absolute bottom-0 left-0 w-full  z-[200] ">
       <div className="h-[50px]"></div>
-      <div className="flex flex-col gap-4 bg-[#15140F] py-8">
-        <ul className="flex items-center justify-center gap-10">
+      <div className="flex flex-col gap-4 bg-[#15140F] py-8 px-10">
+        <ul className="flex items-center justify-center gap-4 lg:gap-10 text-sm lg:text-base flex-wrap" >
           <li className="hover:text-orange-300">Privacy Notice</li>
           <li className="hover:text-orange-300">Terms of Service</li>
           <li className="hover:text-orange-300">Cookie Policy</li>

@@ -5,14 +5,14 @@ import Warlords from "@/components/Warlords";
 import Footer from "@/components/Footer";
 
 const ProductPage = () => {
-
   return (
     <div className="px-8 py-4 relative flex flex-col gap-10">
-      <ProductFilterView  />
-      <Valorant/>
-      <Evolution/>
-      <Warlords/>
-      <Footer/>
+      <ProductFilterView />
+
+      <Valorant />
+      <Evolution />
+      <Warlords />
+      <Footer />
     </div>
   );
 };
