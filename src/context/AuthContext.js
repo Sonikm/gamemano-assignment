@@ -1,54 +1,60 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
-const AuthContext = createContext();
+const AuthContext = createContext(); // Create Auth context
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext); // Hook to access Auth context
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    // Check if the user is logged in from localStorage
     const storedUser = JSON.parse(localStorage.getItem("user"));
     return storedUser?.isLoggedIn || false;
   });
 
-  const router = useRouter(); 
+  const router = useRouter();
 
   useEffect(() => {
+    // Sync logged-in state with localStorage
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedUser?.isLoggedIn !== isLoggedIn) {
       setIsLoggedIn(storedUser?.isLoggedIn || false);
     }
-  }, [isLoggedIn]); 
+  }, [isLoggedIn]);
+
   const signIn = (email, password) => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedUser) {
+      // Check if the provided credentials match the stored user
       if (storedUser.email === email && storedUser.password === password) {
         storedUser.isLoggedIn = true;
-        localStorage.setItem("user", JSON.stringify(storedUser)); 
+        localStorage.setItem("user", JSON.stringify(storedUser)); // Update localStorage
         setIsLoggedIn(true);
+        toast.success("User signed in successfully"); 
         router.push("/"); 
-        console.log("User signed in successfully");
       } else {
-        console.log("Invalid credentials");
+        toast.error("Invalid credentials"); 
       }
     } else {
-      console.log("No account found. Please sign up.");
+      toast.info("No account found. Please sign up."); 
     }
   };
 
   const signUp = (username, email, password) => {
+    // Create a new user and save to localStorage
     const newUser = {
       username,
       email,
       password,
-      isLoggedIn: true, 
+      isLoggedIn: true,
     };
 
-    localStorage.setItem("user", JSON.stringify(newUser)); 
+    localStorage.setItem("user", JSON.stringify(newUser)); // Store new user
     setIsLoggedIn(true);
-    console.log("User signed up and logged in");
+    toast.success("User signed up."); 
     router.push("/"); 
   };
 
@@ -57,17 +63,17 @@ export const AuthProvider = ({ children }) => {
 
     if (storedUser) {
       storedUser.isLoggedIn = false;
-      localStorage.setItem("user", JSON.stringify(storedUser)); 
+      localStorage.setItem("user", JSON.stringify(storedUser)); // Update localStorage
     }
 
     setIsLoggedIn(false);
-    router.push("/login");
-    console.log("User logged out");
+    router.push("/login"); 
+    toast.info("User logged out");
   };
 
   return (
     <AuthContext.Provider value={{ signIn, signUp, logOut, isLoggedIn }}>
-      {children}
+      {children} 
     </AuthContext.Provider>
   );
 };

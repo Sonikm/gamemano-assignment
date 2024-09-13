@@ -12,6 +12,9 @@ import Navbar from "@/features/Navbar";
 import { SearchProvider } from "@/context/SearchContext";
 import { CategoryProvider } from "@/context/CategoryContext";
 import { AuthProvider } from "@/context/AuthContext";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const poppinsFont = Poppins({
   subsets: ["latin"],
@@ -59,6 +62,7 @@ export default function RootLayout({ children }) {
             </CategoryProvider>
           </SearchProvider>
         </AuthProvider>
+        <ToastContainer autoClose={2000}  closeOnClick />
       </body>
     </html>
   );

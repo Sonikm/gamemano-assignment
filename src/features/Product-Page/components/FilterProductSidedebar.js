@@ -9,8 +9,6 @@ const FilterProductSidedebar = ({setToggleFilterSidebar}) => {
   const { selectedCategory, setSelectedCategory } = useCategory();
   const { searchQuery, setSearchQuery } = useSearch();
   
-  
-
   const { categories, setCategories, isLoading } = useCategoryList();
 
   const [priceRange, setPriceRange] = useState([40, 55]);
