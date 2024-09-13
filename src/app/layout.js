@@ -11,6 +11,7 @@ import "./globals.css";
 import Navbar from "@/features/Navbar";
 import { SearchProvider } from "@/context/SearchContext";
 import { CategoryProvider } from "@/context/CategoryContext";
+import { AuthProvider } from "@/context/AuthContext";
 
 const poppinsFont = Poppins({
   subsets: ["latin"],
@@ -48,14 +49,16 @@ export default function RootLayout({ children }) {
       <body
         className={`${aoboshiOne.variable} ${pressStart2.variable}  ${poppinsFont.variable}  ${prostoOne.variable} ${wallpoet.variable}  font-poppins antialiased`}
       >
-        <SearchProvider>
-          <CategoryProvider>
-            <div className="">
-              <Navbar />
-              <div className="">{children}</div>
-            </div>
-          </CategoryProvider>
-        </SearchProvider>
+        <AuthProvider>
+          <SearchProvider>
+            <CategoryProvider>
+              <div className="">
+                <Navbar />
+                <div className="">{children}</div>
+              </div>
+            </CategoryProvider>
+          </SearchProvider>
+        </AuthProvider>
       </body>
     </html>
   );

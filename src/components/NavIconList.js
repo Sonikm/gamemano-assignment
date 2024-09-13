@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Line from "./Line";
+import Link from "next/link";
 
 const NavIconList = () => {
   return (
@@ -14,7 +15,7 @@ const NavIconList = () => {
       <Line height={"h-[30px]"} />
       <Image src={"/shop.svg"} alt="" width={38} height={38} />
       <Line height={"h-[30px]"} />
-      <Image src={"/user.svg"} alt="" width={38} height={38} />
+      <Link href={'/login'}><Image src={"/user.svg"} alt="" width={38} height={38} /></Link>
     </div>
   );
 };

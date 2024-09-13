@@ -9,6 +9,7 @@ const FilterProductSidedebar = ({setToggleFilterSidebar}) => {
   const { selectedCategory, setSelectedCategory } = useCategory();
   const { searchQuery, setSearchQuery } = useSearch();
   
+  
 
   const { categories, setCategories, isLoading } = useCategoryList();
 
