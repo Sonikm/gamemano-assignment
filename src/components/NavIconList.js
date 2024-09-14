@@ -9,12 +9,10 @@ const NavIconList = () => {
   const [showNotification, setShowNotification] = useState(false);
 
   return (
-    <div
-      onClick={() => setShowNotification(!showNotification)}
-      className="flex items-center gap-4"
-    >
+    <div className="flex items-center gap-4">
       {showNotification && <Notifications />}
       <Image
+        onClick={() => setShowNotification(!showNotification)}
         className="cursor-pointer"
         src={"/notification.svg"}
         alt=""

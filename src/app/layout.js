@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
             </CategoryProvider>
           </SearchProvider>
         </AuthProvider>
-        <ToastContainer autoClose={2000}  closeOnClick />
+        <ToastContainer autoClose={2000} closeOnClick />
       </body>
     </html>
   );

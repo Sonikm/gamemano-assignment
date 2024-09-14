@@ -1,7 +1,7 @@
+import Leaderboard from "@/features/leaderboard/Leaderboard"
+
 const LeaderboardPage = () => {
-  return (
-    <div className=''>LeaderboardPage</div>
-  )
+  return <Leaderboard/>
 }
 
 export default LeaderboardPage

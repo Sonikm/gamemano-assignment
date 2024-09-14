@@ -36,7 +36,10 @@ const ProductList = ({ isShowAllProducts }) => {
     }
   });
 
-  if (isLoading || !products) return <h2 className="h-full text-center text-primary text-lg">Loading...</h2>;
+  if (isLoading || !products)
+    return (
+      <h2 className="h-full text-center text-primary text-lg">Loading...</h2>
+    );
 
   return (
     <>
@@ -58,18 +61,14 @@ const ProductList = ({ isShowAllProducts }) => {
           />
         </div>
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3   place-items-center grid-cols-1  2xl:grid-cols-4  gap-y-8 gap-4 my-10 overflow-x-scroll scrollbar-hide ">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 items-start   place-items-center grid-cols-1  2xl:grid-cols-4  gap-y-8 gap-4 my-10 overflow-x-scroll scrollbar-hide ">
         {sortedProducts.map((product, i) => (
           <Link
             href={`/game-store/${product.id}`}
             prefetch={true}
             key={product.id}
           >
-            {isShowAllProducts ? (
-              <ProductCard product={product} />
-            ) : (
-              i < 9 && <ProductCard product={product} />
-            )}
+            <ProductCard product={product} />
           </Link>
         ))}
       </div>

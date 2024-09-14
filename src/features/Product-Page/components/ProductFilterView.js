@@ -19,7 +19,7 @@ const ProductFilterView = () => {
       <Image src={"/filter-category.png"} width={35} height={35} onClick={handleToggleFilterSidebarMenu} alt="" className="md:hidden cursor-pointer"/>
       <div className="w-full ">
         <ProductList isShowAllProducts={isShowAllProducts}  />
-        <div className="flex justify-between  pb-4  md:justify-between md:flex-row flex-col items-start">
+        {/* <div className="flex justify-between  pb-4  md:justify-between md:flex-row flex-col items-start">
           <p className="lg:text-2xl md:text-xl text-sm">Checkout games similar to “Valorant”</p>
           <div className="flex items-center gap-2">
             <span
@@ -30,7 +30,7 @@ const ProductFilterView = () => {
             </span>
             <Image src={"arrow-right.svg"} alt="" width={20} height={10} />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

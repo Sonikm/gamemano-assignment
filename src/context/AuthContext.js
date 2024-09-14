@@ -2,9 +2,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-const AuthContext = createContext(); // Create Auth context
+const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext); // Hook to access Auth context
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -33,13 +33,13 @@ export const AuthProvider = ({ children }) => {
         storedUser.isLoggedIn = true;
         localStorage.setItem("user", JSON.stringify(storedUser)); // Update localStorage
         setIsLoggedIn(true);
-        toast.success("User signed in successfully"); 
-        router.push("/"); 
+        toast.success("User signed in successfully");
+        router.push("/");
       } else {
-        toast.error("Invalid credentials"); 
+        toast.error("Invalid credentials");
       }
     } else {
-      toast.info("No account found. Please sign up."); 
+      toast.info("No account found. Please sign up.");
     }
   };
 
@@ -52,10 +52,10 @@ export const AuthProvider = ({ children }) => {
       isLoggedIn: true,
     };
 
-    localStorage.setItem("user", JSON.stringify(newUser)); // Store new user
+    localStorage.setItem("user", JSON.stringify(newUser));
     setIsLoggedIn(true);
-    toast.success("User signed up."); 
-    router.push("/"); 
+    toast.success("User signed up.");
+    router.push("/");
   };
 
   const logOut = () => {
@@ -67,13 +67,13 @@ export const AuthProvider = ({ children }) => {
     }
 
     setIsLoggedIn(false);
-    router.push("/login"); 
+    router.push("/login");
     toast.info("User logged out");
   };
 
   return (
     <AuthContext.Provider value={{ signIn, signUp, logOut, isLoggedIn }}>
-      {children} 
+      {children}
     </AuthContext.Provider>
   );
 };
