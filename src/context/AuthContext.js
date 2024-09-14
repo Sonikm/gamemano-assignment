@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     // Check if the user is logged in from localStorage
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    return storedUser?.isLoggedIn || false;
+    return storedUser?.isLoggedIn;
   });
 
   const router = useRouter();
@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedUser?.isLoggedIn !== isLoggedIn) {
-      setIsLoggedIn(storedUser?.isLoggedIn || false);
+      setIsLoggedIn(storedUser?.isLoggedIn);
     }
   }, [isLoggedIn]);
 
