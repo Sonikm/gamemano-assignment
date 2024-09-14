@@ -64,11 +64,11 @@ export const AuthProvider = ({ children }) => {
     if (storedUser) {
       storedUser.isLoggedIn = false;
       localStorage.setItem("user", JSON.stringify(storedUser)); // Update localStorage
-    }
 
-    setIsLoggedIn(false);
-    router.push("/login");
-    toast.info("User logged out");
+      setIsLoggedIn(false);
+      router.push("/login");
+      toast.info("User logged out");
+    }
   };
 
   return (
