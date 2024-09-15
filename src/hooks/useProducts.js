@@ -13,7 +13,7 @@ const useProducts = () => {
   const fetchProducts = async () => {
     setIsLoading(true);
     try {
-      if (selectedCategory == undefined || selectedCategory == null) {
+      if (selectedCategory == 'all') {
         const response = await axiosInstance.get("/products");
         setProducts(response.data.products);
       } else {

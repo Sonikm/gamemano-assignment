@@ -14,8 +14,6 @@ const ProductCard = ({ product }) => {
     images,
   } = product;
 
-  console.log(product.category)
-
   return (
     <div className="bg-[#FEF3BC] rounded-lg hover:scale-[1.02] duration-200 transition  shadow-lg p-4 max-w-xs flex flex-col  min-w-[200px]  cursor-pointer">
       <div className="flex justify-center items-center mb-2">

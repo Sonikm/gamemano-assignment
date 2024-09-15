@@ -5,7 +5,7 @@ const CategoryContext = createContext();
 export const useCategory = () => useContext(CategoryContext);
 
 export const CategoryProvider = ({ children }) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('all');
   return (
     <CategoryContext.Provider value={{ selectedCategory, setSelectedCategory }}>
       {children}
