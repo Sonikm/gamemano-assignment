@@ -11,7 +11,7 @@ const Navbar = () => {
         <Logo />
         <NavList />
       </div>
-      <div className="flex items-center  gap-6">
+      <div className="md:flex items-center  gap-6 opacity-0 md:opacity-100 ">
         <SearchBar />
         <div className="lg:flex items-center  lg:opacity-100 hidden relative   gap-6">
           <Line height={"h-[30px]"} />

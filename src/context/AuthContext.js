@@ -7,67 +7,65 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    // Check if the user is logged in from localStorage
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    return storedUser?.isLoggedIn;
-  });
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    // Sync logged-in state with localStorage
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-
-    if (storedUser?.isLoggedIn !== isLoggedIn) {
-      setIsLoggedIn(storedUser?.isLoggedIn);
+    // Check if we're in the browser environment before accessing localStorage
+    if (typeof window !== "undefined") {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      setIsLoggedIn(storedUser?.isLoggedIn || false);
     }
-  }, [isLoggedIn]);
+  }, []);
 
   const signIn = (email, password) => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (typeof window !== "undefined") {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (storedUser) {
-      // Check if the provided credentials match the stored user
-      if (storedUser.email === email && storedUser.password === password) {
-        storedUser.isLoggedIn = true;
-        localStorage.setItem("user", JSON.stringify(storedUser)); // Update localStorage
-        setIsLoggedIn(true);
-        toast.success("User signed in successfully");
-        router.push("/");
+      if (storedUser) {
+        if (storedUser?.email === email && storedUser?.password === password) {
+          storedUser.isLoggedIn = true;
+          localStorage.setItem("user", JSON.stringify(storedUser)); // Update localStorage
+          setIsLoggedIn(true);
+          toast.success("User signed in successfully");
+          router.push("/");
+        } else {
+          toast.error("Invalid credentials");
+        }
       } else {
-        toast.error("Invalid credentials");
+        toast.info("No account found. Please sign up.");
       }
-    } else {
-      toast.info("No account found. Please sign up.");
     }
   };
 
   const signUp = (username, email, password) => {
-    // Create a new user and save to localStorage
-    const newUser = {
-      username,
-      email,
-      password,
-      isLoggedIn: true,
-    };
+    if (typeof window !== "undefined") {
+      const newUser = {
+        username,
+        email,
+        password,
+        isLoggedIn: true,
+      };
 
-    localStorage.setItem("user", JSON.stringify(newUser));
-    setIsLoggedIn(true);
-    toast.success("User signed up.");
-    router.push("/");
+      localStorage.setItem("user", JSON.stringify(newUser));
+      setIsLoggedIn(true);
+      toast.success("User signed up.");
+      router.push("/");
+    }
   };
 
   const logOut = () => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (typeof window !== "undefined") {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (storedUser) {
-      storedUser.isLoggedIn = false;
-      localStorage.setItem("user", JSON.stringify(storedUser)); // Update localStorage
+      if (storedUser) {
+        storedUser.isLoggedIn = false;
+        localStorage.setItem("user", JSON.stringify(storedUser)); // Update localStorage
 
-      setIsLoggedIn(false);
-      router.push("/login");
-      toast.info("User logged out");
+        setIsLoggedIn(false);
+        router.push("/login");
+        toast.info("User logged out");
+      }
     }
   };
 

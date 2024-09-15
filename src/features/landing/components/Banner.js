@@ -12,14 +12,14 @@ const Banner = () => {
           <h1 className="font-wallpoet  sm:text-[60px] text-5xl whitespace-nowrap  md:text-[70px] text-white ">
             Days Gone
           </h1>
-          <div className=" bg-[#1E1E1E] md:text-sm text-xs p-2 text-end">
+          <div className=" bg-[#1E1E1E] md:text-sm text-xs mt-2 sm:mt-0 p-2 text-end">
             RELEASE DATE : 30TH DECEMBER
           </div>
         </div>
       </FadeInTransition>
 
       <TextSlideFadeTransition>
-        <p className="font-prostoOne">
+        <p className="font-prostoOne md:text-base text-sm">
           Players assume the role of Deacon St. John, a former bounty hunter
           struggling to survive in a post-apocalyptic world filled with
           zombie-like creatures called Freaks. Though players are surrounded by
