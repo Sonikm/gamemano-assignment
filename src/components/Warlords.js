@@ -2,7 +2,7 @@ import React from "react";
 import BuyNow from "./BuyNow";
 import Ratings from "@/components/Ratings";
 
-const Warlords = () => {.
+const Warlords = () => {
   return (
     <div className="flex bg-black text-white p-6 sm:p-10   relative mb-[300px]">
       <div className=" basis-[600px]">
